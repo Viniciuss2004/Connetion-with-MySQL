@@ -28,7 +28,6 @@ public class Main {
                 System.out.println("Opção inválida. Tente novamente.");
             }
         }
-
         scanner.close();
     }
 }
