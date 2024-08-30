@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Model {
             int rowsAffected = preparedStatement.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("Nome inserido com sucesso!");
+                JOptionPane.showMessageDialog(null,"Nome inserido com sucesso!");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,7 +79,7 @@ public class Model {
             int rowsAffected = deleteStatement.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("Nome deletado com sucesso!");
+                JOptionPane.showMessageDialog(null,"Nome deletado com sucesso!");
 
                 // Reorganizar os IDs
                 updateStatement = connection.createStatement();
@@ -86,7 +87,7 @@ public class Model {
                 updateStatement.executeUpdate("UPDATE nome SET id = (@count := @count + 1)");
                 updateStatement.executeUpdate("ALTER TABLE nome AUTO_INCREMENT = 1");
             } else {
-                System.out.println("Nenhum nome encontrado com o ID especificado.");
+                JOptionPane.showMessageDialog(null,"Nenhum nome encontrado com o ID especificado.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
